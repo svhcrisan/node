@@ -1,0 +1,112 @@
+[
+  {
+    "product_id": "1",
+    "product_name": "Product 1",
+    "product_description": "Product description 1",
+    "price": "99.00",
+    "product_categories": [
+      1
+    ],
+    "product_rating": "4.5"
+  },
+  {
+    "product_id": "2",
+    "product_name": "Product 2",
+    "product_description": "Product description 2",
+    "price": "45.00",
+    "product_categories": [
+      2
+    ],
+    "product_rating": "3.5"
+  },
+  {
+    "product_id": "3",
+    "product_name": "Product 3",
+    "product_description": "Product description 3",
+    "price": "195.00",
+    "product_categories": [
+      3
+    ],
+    "product_rating": "2.5"
+  },
+  {
+    "product_id": "4",
+    "product_name": "Product 4",
+    "product_description": "Product description 4",
+    "price": "23.00",
+    "product_categories": [
+      2
+    ],
+    "product_rating": "5.0"
+  },
+  {
+    "product_id": "5",
+    "product_name": "Product 5",
+    "product_description": "Product description 5",
+    "price": "79.00",
+    "product_categories": [
+      2
+    ],
+    "product_rating": "4.5"
+  },
+  {
+    "product_id": "6",
+    "product_name": "Product 6",
+    "product_description": "Product description 6",
+    "price": "19.00",
+    "product_categories": [
+      2
+    ],
+    "product_rating": "4.5"
+  },
+  {
+    "product_id": "7",
+    "product_name": "Product 7",
+    "product_description": "Product description 7",
+    "price": "76.00",
+    "product_categories": [
+      1
+    ],
+    "product_rating": "1.5"
+  },
+  {
+    "product_id": "8",
+    "product_name": "Product 8",
+    "product_description": "Product description 8",
+    "price": "54.00",
+    "product_categories": [
+      5
+    ],
+    "product_rating": "2.5"
+  },
+  {
+    "product_id": "9",
+    "product_name": "Product 9",
+    "product_description": "Product description 9",
+    "price": "34.00",
+    "product_categories": [
+      2
+    ],
+    "product_rating": "1.2"
+  },
+  {
+    "product_id": "10",
+    "product_name": "Product 10",
+    "product_description": "Product description 10",
+    "price": "12.00",
+    "product_categories": [
+      2
+    ],
+    "product_rating": "3.5"
+  },
+  {
+    "product_id": "11",
+    "product_name": "Product 11",
+    "product_description": "Product description 11",
+    "price": "43.00",
+    "product_categories": [
+      1
+    ],
+    "product_rating": "2.3"
+  }
+]

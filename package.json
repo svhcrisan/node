@@ -1,0 +1,24 @@
+{
+  "name": "exercises",
+  "start": "node server.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "latest",
+    "angular-ui-router": "~0.2.11",
+    "commander": "git+https://github.com/tj/commander.js.git",
+    "dat-gui": "latest",
+    "express": "~3.0.1",
+    "inquirer": "^6.5.0",
+    "path": "latest",
+    "q": "latest",
+    "sequelize": "latest",
+    "tedious": "latest"
+  }
+}
