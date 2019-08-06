@@ -37,6 +37,16 @@ for (let i = 0; i < categories.length; i++) {
 
 // show products
 router.get('/products', (req, res) => {
+
+    // THE BONUS PART!!!!!!!!!!!!!!!
+    const query = req.query;
+    console.log(query)
+    if (Object.keys(query).length > 0) {
+        const checkCategory = (prod) => {
+            return (prod.product_categories.includes(Number(query.category)) && prod.manufacturerId == query.manufacturerId);
+        }
+        return res.status(200).json(products.filter(checkCategory));
+    }
     res.status(200).json(products);
 });
 
