@@ -1,7 +1,7 @@
 const categories = require("../data/categories.json");
 
 function getCategories(req, res) {
-    res.status(200).json(categories);
+    res.status(200).json({ data: categories });
 }
 
 function getCategoriesID(req, res) {
