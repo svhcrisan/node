@@ -8,3 +8,5 @@ productsRouter.get('/products', products.getProducts);
 productsRouter.get('/products/:id', products.getProductsID);
 
 module.exports = productsRouter;
+
+productsRouter.post('/products', products.createProduct);
