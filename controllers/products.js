@@ -1,4 +1,7 @@
 const products = require("../data/products.json");
+const uuid = require("uuid");
+const fs = require('fs');
+var path = require('path');
 
 function getProducts(req, res) {
     // THE BONUS PART!!!!!!!!!!!!!!!
@@ -14,13 +17,42 @@ function getProducts(req, res) {
 }
 
 function getProductsID(req, res) {
+
     const productId = req.params.id;
-    if (products[productId]) {
-        const oneProduct = res.status(200).json(products[productId]);
+    console.log(productId);
+    const product = products.find(function (prod) {
+        console.log(prod.product_id === productId)
+        return prod.product_id === productId;
+    })
+
+    console.log('aaa', product)
+    if (product) {
+        const oneProduct = res.status(200).json(product);
         return oneProduct;
     }
     return res.status(404).json({ errors: [{ message: "Product not found." }] });
 }
 
+const createProduct = (req, res) => {
+    const product = req.body;
 
-module.exports = { getProducts, getProductsID }
+    //read file 
+    fs.readFile(path.resolve(__dirname, './products.json'), () => {
+        return console.log(data);
+    });
+
+
+    //parse json => [{} {} {}]
+
+    //user.id = uuid
+
+    // push products
+
+    products.push(product)
+
+    res.status(201).json({ data: products });
+}
+
+
+
+module.exports = { getProducts, getProductsID, createProduct }

@@ -10,10 +10,12 @@ const corsOption = {
         if (whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
-            callback(new Error("CORS is on the way, my friend!"));
+            callback(null, true);
         }
     }
 }
+
+
 
 app.use(cors(corsOption));
 app.use('/', categoriesRouter);
