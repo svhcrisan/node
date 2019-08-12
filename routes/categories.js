@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const categoriesRouter = express.Router();
 const categories = require("../controllers/categories");

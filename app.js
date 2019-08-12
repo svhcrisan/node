@@ -4,6 +4,7 @@ const categoriesRouter = require("./routes/categories.js");
 const cors = require("cors");
 const app = express();
 const whitelist = ["http://localhost:3000"];
+const bodyParser = require("body-parser");
 
 const corsOption = {
     origin: (origin, callback) => {
@@ -16,9 +17,13 @@ const corsOption = {
 }
 
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 
 app.use(cors(corsOption));
 app.use('/', categoriesRouter);
 app.use('/', productsRouter);
+
+
 
 module.exports = app;
