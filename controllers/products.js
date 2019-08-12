@@ -1,7 +1,7 @@
 const products = require("../data/products.json");
-const uuid = require("uuid");
+const uuidv4 = require("uuid/v4");
 const fs = require('fs');
-var path = require('path');
+//const path = require('path');
 
 function getProducts(req, res) {
     // THE BONUS PART!!!!!!!!!!!!!!!
@@ -17,15 +17,11 @@ function getProducts(req, res) {
 }
 
 function getProductsID(req, res) {
-
     const productId = req.params.id;
-    console.log(productId);
     const product = products.find(function (prod) {
         console.log(prod.product_id === productId)
         return prod.product_id === productId;
     })
-
-    console.log('aaa', product)
     if (product) {
         const oneProduct = res.status(200).json(product);
         return oneProduct;
@@ -34,25 +30,69 @@ function getProductsID(req, res) {
 }
 
 const createProduct = (req, res) => {
-    const product = req.body;
-
     //read file 
-    fs.readFile(path.resolve(__dirname, './products.json'), () => {
-        return console.log(data);
+    console.log(req.body);
+    fs.readFile('./data/products.json', (err, data) => {
+        if (err) {
+            return console.log(err);
+        }
+        //create new product
+        const newProducts = {
+            product_id: uuidv4(),
+            ...req.body
+        };
+
+        let products = JSON.parse(data);
+        products = [...products, newProducts];
+        res.status(201).json({ newProducts });
+
+        //re-write JSON
+        fs.writeFile('./data/products.json', JSON.stringify(products), (err) => { return err });
     });
-
-
-    //parse json => [{} {} {}]
-
-    //user.id = uuid
-
-    // push products
-
-    products.push(product)
-
-    res.status(201).json({ data: products });
 }
 
+const deleteProduct = (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    fs.readFile('./data/products.json', "utf8", (err, data) => {
+        if (err) {
+            return console.log(err);
+        }
 
+        let products = JSON.parse(data);
+        let newProducts = products.filter(obj => {
+            return obj.product_id !== id;
+        });
 
-module.exports = { getProducts, getProductsID, createProduct }
+        fs.writeFile('./data/products.json', JSON.stringify(newProducts), (err) => { return err });
+        res.status(200).json({ message: `Product with id: ${id} has been deleted.` });
+    });
+}
+
+const updateProduct = (req, res) => {
+    const id = req.params.id;
+    fs.readFile('./data/products.json', "utf8", (err, data) => {
+        if (err) {
+            return console.log(err);
+        } // treat error
+
+        let products = JSON.parse(data);
+        console.log(products);
+
+        const newProducts = products.map((data) => {
+            if (data.product_id === id) {
+                data = {
+                    ...data,
+                    ...req.body
+                };
+            }
+            return data;
+        });
+
+        fs.writeFile('./data/products.json', JSON.stringify(newProducts), (err) => { return err });
+        res.status(200).json({ newProducts });
+
+    });
+}
+
+module.exports = { getProducts, getProductsID, createProduct, deleteProduct, updateProduct }
